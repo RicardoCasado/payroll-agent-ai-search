@@ -29,8 +29,6 @@ codeConfiguration:
 
 ```
 
-<br>
-<br>
 
 Variables declared in azure.yaml
 
@@ -51,22 +49,3 @@ Their resolved values can be inspected locally with:
 ```powershell
 azd env get-values
 ```
-
-
-<br>
-<br>
-
-<br>
-<br>
-
-<br>
-<br>
-
-
-### Azure configuration
-
-The project uses [`azure.yaml`](azure.yaml) to configure and deploy the Microsoft Foundry hosted agent. This file defines the Python entry point, runtime resources, environment variables, Microsoft Foundry project, Azure AI Search connection, Foundry Toolbox and Responses protocol.
-
-The configuration references existing Azure resources, including the `payroll-rag` search index and the Blob Storage container containing the payroll CSV files.
-
-For a detailed explanation of the services, environment variables, managed identities and deployment configuration, see [Azure configuration](docs/azure-configuration.md).

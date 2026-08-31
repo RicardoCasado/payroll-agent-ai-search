@@ -54,8 +54,12 @@ test_toolbox.py
 # Original generated documentation kept only as a local reference
 README_Original.md
 
-#Original Azure < VERY IMPORTANT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#Original Azure
 AI_agent_foundry_ai_search\azure_NORMAL.yaml
+
+
+# Complete payroll datasets kept only for local sample generation
+dataset/raw/
 
 # Operating-system files
 .DS_Store

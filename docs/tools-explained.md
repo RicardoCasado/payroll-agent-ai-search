@@ -22,7 +22,6 @@ Blob Storage through `payroll_data.py`.
 
 Available payroll years are 2023, 2024, 2025, and 2026.
 
-s
 ### `get_salary_statistics`
 
 Calculates Annual Base Salary statistics for a selected payroll year
