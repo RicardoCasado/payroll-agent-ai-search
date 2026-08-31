@@ -1,0 +1,135 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+
+# This portfolio project intentionally retains the Azure resource names,
+# endpoints, subscription ID, and resource IDs used by the original
+# deployment to make the implemented architecture explicit and traceable.
+# These identifiers are environment-specific metadata, not authentication
+# credentials. Anyone deploying the project in another Azure environment
+# must replace them with identifiers from their own subscription.
+
+
+# Azure Developer CLI extension required to manage Foundry agents.
+requiredVersions:
+    extensions:
+        azure.ai.agents: ">=1.0.0-beta.4"
+
+name: payroll-agent-ai-search
+
+services:
+    # Hosted payroll agent implemented with Microsoft Agent Framework.
+    payroll-agent-ai-search:
+        project: src/payroll-agent-ai-search
+        host: azure.ai.agent
+        language: python
+
+        # Azure and Foundry resources used by the hosted agent.
+        uses:
+            - ai-project
+            - srchpayrollrag9482nypnmu
+            - payroll-search-toolbox
+
+        # Foundry Toolbox made available to the agent.
+        toolboxes:
+            - payroll-search-toolbox
+
+        # Python entry point and runtime used by the hosted agent.
+        codeConfiguration:
+            entryPoint: main.py
+            runtime: python_3_13
+
+        # Compute resources allocated to each hosted agent instance.
+        container:
+            resources:
+                cpu: "0.5"
+                memory: 1Gi
+
+        description: A hosted payroll agent built with Microsoft Agent Framework.
+
+        # Variables passed to the hosted agent at runtime.
+        environmentVariables:
+            # Existing Foundry model deployment used by FoundryChatClient.
+            - name: AZURE_AI_MODEL_DEPLOYMENT_NAME
+              value: ${AZURE_AI_MODEL_DEPLOYMENT_NAME}
+
+            # MCP endpoint generated for the Foundry payroll search toolbox.
+            - name: TOOLBOX_PAYROLL_SEARCH_TOOLBOX_MCP_ENDPOINT
+              value: ${TOOLBOX_PAYROLL_SEARCH_TOOLBOX_MCP_ENDPOINT}
+
+            # Existing Azure Storage account and container holding payroll CSV files.
+            - name: PAYROLL_STORAGE_ACCOUNT_URL
+              value: ${PAYROLL_STORAGE_ACCOUNT_URL}
+
+            - name: PAYROLL_STORAGE_CONTAINER
+              value: ${PAYROLL_STORAGE_CONTAINER}
+
+        # Deploy the Python code as a containerized Foundry hosted agent.
+        kind: hosted
+
+        metadata:
+            tags:
+                - Agent Framework
+                - AI Agent Hosting
+                - Azure AI AgentServer
+                - Responses Protocol
+                - Streaming
+
+        name: payroll-agent-ai-search
+
+        # Protocol exposed by the agent for clients such as Streamlit and azd.
+        protocols:
+            - protocol: responses
+              version: 2.0.0
+
+    # Existing Microsoft Foundry project used by the hosted agent.
+    # No new model deployments are created from this file.
+    ai-project:
+        host: azure.ai.project
+        deployments: []
+        endpoint: "https://ricardo286malaga-9265-resource.services.ai.azure.com/api/projects/ricardo286malaga-9265"
+
+    # Foundry project connection to the existing Azure AI Search service.
+    # Authentication uses the Foundry project's managed identity.
+    srchpayrollrag9482nypnmu:
+        host: azure.ai.connection
+
+        uses:
+            - ai-project
+
+        category: CognitiveSearch
+        target: "https://srch-payroll-rag-9482.search.windows.net/"
+        authType: ProjectManagedIdentity
+
+        metadata:
+            ApiType: "Azure"
+            ApiVersion: "2024-05-01-preview"
+            DeploymentApiVersion: "2023-11-01"
+            ResourceId: "/subscriptions/10b73053-9f61-46a2-80be-e3d74bec93b5/resourceGroups/rg-ricardo286malaga-9482/providers/Microsoft.Search/searchServices/srch-payroll-rag-9482"
+            displayName: "srch-payroll-rag-9482"
+            type: "azure_ai_search"
+
+    # Foundry Toolbox exposing Azure AI Search as the payroll_search tool.
+    payroll-search-toolbox:
+        host: azure.ai.toolbox
+
+        uses:
+            - ai-project
+            - srchpayrollrag9482nypnmu
+
+        description: Search payroll regulations and supporting documents.
+
+        tools:
+            - type: azure_ai_search
+              name: payroll_search
+              description: Search indexed payroll regulations, overtime rules, employee guides, and related documents.
+
+              azure_ai_search:
+                  indexes:
+                      # Existing Azure AI Search index queried by payroll_search.
+                      - project_connection_id: "/subscriptions/10b73053-9f61-46a2-80be-e3d74bec93b5/resourceGroups/rg-ricardo286malaga-9482/providers/Microsoft.CognitiveServices/accounts/ricardo286malaga-9265-resource/projects/ricardo286malaga-9265/connections/srchpayrollrag9482nypnmu"
+                        index_name: "payroll-rag"
+                        query_type: "simple"
+                        top_k: 5
+
+# Microsoft Foundry manages the deployment infrastructure.
+infra:
+    provider: microsoft.foundry

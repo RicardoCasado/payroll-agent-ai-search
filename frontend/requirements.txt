@@ -1,0 +1,4 @@
+streamlit
+azure-identity
+requests
+python-dotenv

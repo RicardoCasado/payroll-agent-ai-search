@@ -1,0 +1,29 @@
+.env.example
+# Virtual environments
+.venv/
+**/.venv/
+
+# Python-generated files
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Local environment configuration
+.env
+.env.*
+
+# Logs
+*.log
+
+# Evaluation artifacts not required by the hosted agent
+.agent_configs/
+datasets/
+evaluators/
+eval.yaml
+
+# Development metadata
+.git/
+.vscode/

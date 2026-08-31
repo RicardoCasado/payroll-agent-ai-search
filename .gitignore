@@ -1,0 +1,63 @@
+# Environment variables and local secrets
+.env
+**/.env
+.env.*
+**/.env.*
+
+# Virtual environments
+.venv/
+**/.venv/
+venv/
+**/venv/
+
+# Keep environment-variable templates in Git
+!.env.example
+!**/.env.example
+
+# Python-generated files
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*.pyd
+.Python
+
+# Python tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Azure Developer CLI local state
+.azure/
+
+# Logs
+*.log
+
+# Generated evaluation artifacts
+src/payroll-agent-ai-search/.agent_configs/
+src/payroll-agent-ai-search/datasets/
+src/payroll-agent-ai-search/evaluators/
+src/payroll-agent-ai-search/eval.yaml
+
+# Streamlit local conversation history
+frontend/Database/streamlit_foundry_conversations.json
+
+# Editor configuration
+.vscode/
+.idea/
+
+# Local diagnostic scripts
+test_toolbox.py
+
+
+# Original generated documentation kept only as a local reference
+README_Original.md
+
+#Original Azure < VERY IMPORTANT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+AI_agent_foundry_ai_search\azure_NORMAL.yaml
+
+# Operating-system files
+.DS_Store
+Thumbs.db
+desktop.ini
