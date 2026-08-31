@@ -1,6 +1,3 @@
-Poner referencias en una estructura similar a los anteriores, es decir, más cuadrados no tan apaisados y completar las otras dos partes de referencias. Siendo breve por supuesto. Aunque no estoy seguro si al tener tan poco texto es mejor apaisado como esta ahora o ponerlo más cuadrado o como bloque como están los anteriores
-d
-
 # Payroll AI Agent 
 
 Un AI Agent construido con Azure AI Foundry, Agent Framework, Azure AI Search, Azure Blob Storage, and Streamlit. The agent can calculate payroll statistics, perform data-quality checks, identify records that require review, compare payroll periods,
