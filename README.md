@@ -1,4 +1,4 @@
-# Payroll AI Agent 
+    # Payroll AI Agent 
 
 Un AI Agent construido con Azure AI Foundry, Agent Framework, Azure AI Search, Azure Blob Storage, and Streamlit. The agent can calculate payroll statistics, perform data-quality checks, identify records that require review, compare payroll periods,
 and retrieve relevant regulatory information. Sus consulta utilizan dos tipos de dataset. El primero son datos estructurados de tipo csv y muestra nóminas de la ciudad de Houston
@@ -15,6 +15,12 @@ https://data.houstontx.gov/dataset/payroll     y la segunda es un conjunto de da
 - 💾 **Persistent chat history**: Preserve Streamlit conversations locally across application reruns.
 - ☁️ **Microsoft Foundry hosting**: Deploy the containerized agent through Azure Developer CLI and expose it using the Responses Protocol.
 
+
+## Architecture
+
+The following diagram summarizes the project architecture, including the Microsoft Foundry hosted agent, the GPT-5 mini model deployment, Azure Blob Storage, document processing, Azure AI Search and the Streamlit interface.
+
+![Payroll AI Agent architecture](docs/payroll-agent-architecture.svg)
 
 
 
@@ -147,9 +153,6 @@ The workflow is exposed to the main agent through
 
 
 
-
-<br>
-<br>
 
 ## References
 

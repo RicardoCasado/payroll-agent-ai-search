@@ -65,3 +65,10 @@ dataset/raw/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Generated evaluation and local execution artifacts
+evaluation-artifacts/
+local-logs/
+
+# Architecture image exported only for local use
+/docs/payroll-agent-architecture.png
