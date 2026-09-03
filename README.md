@@ -1,8 +1,9 @@
-#  Payroll AI Agent 
+# Payroll AI Agent
 
-An AI Agent built with Azure AI Foundry, Agent Framework, Azure AI Search, Azure Blob Storage, and Streamlit. The agent can calculate payroll statistics, perform data-quality checks, identify records that require review, compare payroll periods,
-and retrieve relevant regulatory information. Sus consulta utilizan dos tipos de dataset. El primero son datos estructurados de tipo csv y muestra nóminas de la ciudad de Houston
-https://data.houstontx.gov/dataset/payroll     y la segunda es un conjunto de dato no estructurado sobre temas de legales de nóminas aplicables a los trabajadores de la ciudad de Houston así como para determinados sectores: bomberos, policias, etc 
+An AI Agent built with Azure AI Foundry, Agent Framework, Azure AI Search, Azure Blob Storage, and Streamlit. The agent can calculate payroll statistics, perform data-quality checks, identify records that require review, compare payroll periods, and retrieve relevant regulatory information. Its queries use two types of datasets. The first consists of structured CSV payroll data from the City of Houston:
+https://data.houstontx.gov/dataset/payroll
+
+The second consists of unstructured documents covering payroll regulations applicable to City of Houston employees, including specific provisions for certain groups, such as firefighters and police officers.
 
 
 
