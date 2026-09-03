@@ -29,6 +29,14 @@ The following diagram summarizes the project architecture, including the Microso
 
 
 
+## Demo
+
+The following video demonstrates the Streamlit interface communicating with the payroll agent hosted in Microsoft Foundry. It shows structured payroll analysis, conversational context and regulatory-document retrieval through Azure AI Search.
+
+[▶️ Watch the Payroll AI Agent demo](docs/demo/payroll-agent-demo.mp4)
+
+
+
 ## Runtime and container
 
 The hosted agent runs in a Python 3.13 container. Its Python
