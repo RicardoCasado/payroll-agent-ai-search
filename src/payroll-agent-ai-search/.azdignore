@@ -1,29 +1,40 @@
-.env.example
+# Local environment files
+.env
+.env.*
+**/.env
+**/.env.*
+
 # Virtual environments
-.venv/
-**/.venv/
+.venv
+.venv/**
+**/.venv
+**/.venv/**
 
 # Python-generated files
-__pycache__/
-**/__pycache__/
+__pycache__
+__pycache__/**
+**/__pycache__
+**/__pycache__/**
 *.pyc
 *.pyo
 *.pyd
 .Python
 
-# Local environment configuration
-.env
-.env.*
-
 # Logs
 *.log
+**/*.log
 
-# Evaluation artifacts not required by the hosted agent
-.agent_configs/
-datasets/
-evaluators/
+# Evaluation artifacts
+.agent_configs
+.agent_configs/**
+datasets
+datasets/**
+evaluators
+evaluators/**
 eval.yaml
 
 # Development metadata
-.git/
-.vscode/
+.git
+.git/**
+.vscode
+.vscode/**

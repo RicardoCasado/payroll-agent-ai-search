@@ -72,3 +72,13 @@ local-logs/
 
 # Architecture image exported only for local use
 /docs/payroll-agent-architecture.png
+
+
+# Private keys and certificates
+*.pem
+*.pfx
+*.key
+
+
+# Files removed temporally 
+\docs\test-functions-explained.md
