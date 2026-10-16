@@ -78,3 +78,7 @@ local-logs/
 *.pem
 *.pfx
 *.key
+
+
+# Files removed temporally
+\docs\test-functions-explained.md
