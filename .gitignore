@@ -80,5 +80,5 @@ local-logs/
 *.key
 
 
-# Files removed temporally
+# Files removed temporally 
 \docs\test-functions-explained.md
