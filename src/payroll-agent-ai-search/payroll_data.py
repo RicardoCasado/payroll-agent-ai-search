@@ -20,12 +20,16 @@ from azure.core.exceptions import (
 from azure.identity import DefaultAzureCredential
 from azure.storage.blob import BlobServiceClient
 from dotenv import load_dotenv
+from opentelemetry import trace
 
 
 # Load local development settings from .env when the file exists.
 # In Microsoft Foundry, the hosted environment supplies equivalent
 # settings through deployment and platform-managed variables.
 load_dotenv()
+
+# Get the OpenTelemetry tracer used to create custom spans.
+tracer = trace.get_tracer("payroll-agent")
 
 
 # Payroll files expected in the configured Blob Storage container.
@@ -147,19 +151,20 @@ def _load_payroll_dataframe_cached(
 
 
 
-
+# Get the OpenTelemetry tracer used to create custom spans.
 def load_payroll_dataframe(
     year: int,
 ) -> pd.DataFrame:
-    """Return an independent copy of the payroll data for a year.
+    """Return an independent copy of the payroll data for a year."""
 
-    Returning a copy prevents individual tools from modifying the
-    cached DataFrame shared by subsequent requests.
-    """
+    with tracer.start_as_current_span("load_payroll_dataframe") as span:
+        span.set_attribute("payroll.year", year)
 
-    dataframe = _load_payroll_dataframe_cached(year)
+        dataframe = _load_payroll_dataframe_cached(year)
 
-    return dataframe.copy(deep=True)
+        return dataframe.copy(deep=True)
+
+
 
 
 def clear_payroll_cache() -> None:
